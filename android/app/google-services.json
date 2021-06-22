@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "619068286905",
+    "project_id": "flutter-pokemon-tcg",
+    "storage_bucket": "flutter-pokemon-tcg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619068286905:android:f78acb333a4b27bf1bf868",
+        "android_client_info": {
+          "package_name": "com.example.bloc_pokemon_tcg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "619068286905-cg0t8err6v868apeb3m1rpphopd985o3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bloc_pokemon_tcg",
+            "certificate_hash": "b78475518bdb9bc86504f5c8ad150702c8ff8c80"
+          }
+        },
+        {
+          "client_id": "619068286905-queqgapesb2iv4q553mm19glsasq25mu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQjEKUD09nqPkg8NVPC7VUNIPR2m26lOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "619068286905-queqgapesb2iv4q553mm19glsasq25mu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
