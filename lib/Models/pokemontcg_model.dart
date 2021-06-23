@@ -114,16 +114,35 @@
 
 */
 
+class PokemonCardAbility {
+  final String name;
+  final String damage;
+  final String text;
+
+  PokemonCardAbility(this.name, this.damage, this.text);
+  PokemonCardAbility.fromJson(Map<String, dynamic> json)
+      : name = json["name"],
+        damage = json["damage"],
+        text = json["text"];
+}
+
 class PokemonCard {
   final String name;
   final String imageUrl;
   final String id;
 
-  PokemonCard(this.name, this.imageUrl, this.id);
+  final List<PokemonCardAbility> abilities;
+  final List<String> types;
+
+  PokemonCard(this.name, this.imageUrl, this.id, this.abilities, this.types);
   PokemonCard.fromJson(Map<String, dynamic> json)
       : name = json["name"],
         imageUrl = json["images"]["small"],
-        id = json["id"];
+        id = json["id"],
+        abilities = (json["abilities"] as List)
+            .map((ability) => PokemonCardAbility.fromJson(ability))
+            .toList(),
+        types = (json["types"] as List).map((type) => type as String).toList();
 }
 
 class PokemonCardPage {
