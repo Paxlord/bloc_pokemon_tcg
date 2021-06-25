@@ -114,35 +114,92 @@
 
 */
 
+import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+
+part 'pokemontcg_model.g.dart';
+
 class PokemonCardAbility {
   final String name;
-  final String damage;
   final String text;
 
-  PokemonCardAbility(this.name, this.damage, this.text);
+  PokemonCardAbility(this.name, this.text);
   PokemonCardAbility.fromJson(Map<String, dynamic> json)
       : name = json["name"],
-        damage = json["damage"],
         text = json["text"];
 }
 
-class PokemonCard {
+@HiveType(typeId: 1)
+class PokemonCard extends HiveObject {
+  @HiveField(0)
   final String name;
+
+  @HiveField(1)
   final String imageUrl;
+
+  @HiveField(4)
+  final String imageUrl_Big;
+
+  @HiveField(2)
   final String id;
 
-  final List<PokemonCardAbility> abilities;
+  //final List<PokemonCardAbility> abilities;
+  @HiveField(3)
   final List<String> types;
 
-  PokemonCard(this.name, this.imageUrl, this.id, this.abilities, this.types);
+  PokemonCard(this.name, this.imageUrl, this.id, this.types, this.imageUrl_Big);
   PokemonCard.fromJson(Map<String, dynamic> json)
       : name = json["name"],
         imageUrl = json["images"]["small"],
+        imageUrl_Big = json["images"]["large"],
         id = json["id"],
-        abilities = (json["abilities"] as List)
-            .map((ability) => PokemonCardAbility.fromJson(ability))
-            .toList(),
         types = (json["types"] as List).map((type) => type as String).toList();
+
+  Color mapTypesToColor() {
+    switch (types[0]) {
+      case "Fighting":
+        return Colors.brown;
+      case "Flying":
+        return Colors.lightBlue[200]!;
+      case "Poison":
+        return Colors.purple;
+      case "Ground":
+        return Colors.brown[300]!;
+      case "Rock":
+        return Colors.brown[800]!;
+      case "Bug":
+        return Colors.green[200]!;
+      case "Ghost":
+        return Colors.purple[200]!;
+      case "Metal":
+        return Colors.grey;
+      case "Fire":
+        return Colors.red;
+      case "Water":
+        return Colors.blue;
+      case "Grass":
+        return Colors.green;
+      case "Lightning":
+        return Colors.yellow;
+      case "Psychic":
+        return Colors.purple[800]!;
+      case "Ice":
+        return Colors.blue[200]!;
+      case "Dragon":
+        return Colors.deepPurple;
+      case "Fairy":
+        return Colors.pink;
+      case "Darkness":
+        return Colors.deepPurple[900]!;
+    }
+
+    return Colors.black;
+  }
+
+  @override
+  String toString() {
+    return "Nom : $name, Type principal: ${types[0]}, id: $id, image_url: $imageUrl, image_urlBig: $imageUrl_Big";
+  }
 }
 
 class PokemonCardPage {

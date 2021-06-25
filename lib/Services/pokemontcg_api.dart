@@ -18,6 +18,8 @@ class PokemonTCGDataService {
 
     final decodedResponse = jsonDecode(response.body);
 
+    print(decodedResponse["data"][0]["attacks"]);
+
     return PokemonCardPage.fromJson(decodedResponse);
   }
 
